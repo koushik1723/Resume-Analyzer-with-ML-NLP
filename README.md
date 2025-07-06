@@ -7,15 +7,28 @@ A smart resume screening web app that uses **Natural Language Processing (NLP)**
 ---
 
 ## 🚀 Live Demo
-
-👉 Local URL: http://localhost:8503
-  Network URL: http://192.168.178.179:8503
+  Local URL: http://localhost:8502
+  Network URL: http://192.168.92.179:850203
 
 ---
+Resume Scoring (Out of 100)
+Keyword Match (50 points):
+Scores based on the percentage of job-related keywords found in the resume.
+Example: If 10 out of 20 keywords match → (10/20) × 50 = 25 points.
 
-## 🖼 Demo Screenshot![Screenshot 2025-07-06 100944](https://github.com/user-attachments/assets/60d84767-7d09-4d39-bdf4-e29bbd3cea1f)
+Education Match (25 points):
+Full points awarded if the resume contains any education-related keywords like "b.tech", "m.tech", or "bachelor".
+
+Experience Match (25 points):
+Full points awarded if the resume mentions work experience (e.g., "2 years", "3 yrs").
+
+Total Score = Keyword Score + Education Points + Experience Points
 
 
+
+## 🖼 Demo Screenshot
+
+![Screenshot 2025-07-06 142940](https://github.com/user-attachments/assets/e0d89420-cc1a-460f-8c1e-7bf8f852fc57)
 
 
 
