@@ -7,8 +7,8 @@ A smart resume screening web app that uses **Natural Language Processing (NLP)**
 ---
 
 ## 🚀 Live Demo
-  Local URL: http://localhost:8502
-  Network URL: http://192.168.92.179:850203
+  Local URL: http://localhost:8501
+  Network URL: http://172.18.108.19:8501
 
 ---
 Resume Scoring (Out of 100)
