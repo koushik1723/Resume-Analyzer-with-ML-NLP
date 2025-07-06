@@ -11,8 +11,7 @@ from nltk.corpus import stopwords
 # Setup
 sys.modules['sklearn.preprocessing.label'] = sys.modules['sklearn.preprocessing._label']
 
-nltk.download('punkt')
-nltk.download('stopwords')
+
 
 # Load models
 clf = pickle.load(open('clf.pkl', 'rb'))
@@ -41,6 +40,8 @@ def clean_resume(resume_text):
 
 # Main App
 def main():
+    nltk.download('punkt')
+    nltk.download('stopwords')
     st.set_page_config(page_title="Resume Screening App", page_icon="📄")
     st.title("📄 Resume Screening App")
     st.markdown("Upload a resume to predict the job category using a machine learning model.")
