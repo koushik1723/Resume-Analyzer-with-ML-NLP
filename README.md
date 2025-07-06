@@ -14,14 +14,10 @@ A smart resume screening web app that uses **Natural Language Processing (NLP)**
 
 ## 🖼 Demo Screenshot
 
-<p align="center">
-  <img![Screenshot 2025-07-06 100944](https://github.com/user-attachments/assets/f53a2ae9-c30f-46ac-81fa-7f7cce27a077)
- src=
 
->
-</p>
 
----
+---![Uploading Screenshot 2025-07-06 100944.png…]()
+
 
 ## ✨ Features
 
