@@ -8,7 +8,8 @@ A smart resume screening web app that uses **Natural Language Processing (NLP)**
 
 ## 🚀 Live Demo
 
-👉 [Click here to try the app](https://your-username-resume-classifier.streamlit.app)
+👉 Local URL: http://localhost:8503
+  Network URL: http://192.168.178.179:8503
 
 ---
 
