@@ -37,6 +37,36 @@ def clean_resume(resume_text):
     clean_text = re.sub('[%s]' % re.escape("""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""), ' ', clean_text)
     clean_text = re.sub(r'[^\x00-\x7f]', ' ', clean_text)
     return clean_text
+def score_resume(full_text, job_keywords, education_keywords):
+    score = 0
+
+    # Keyword Match Score (50 pts)
+    matched_keywords = [kw for kw in job_keywords if kw.lower() in full_text.lower()]
+    score += (len(matched_keywords) / len(job_keywords)) * 50
+
+    # Education Match (25 pts)
+    if any(edu in full_text.lower() for edu in education_keywords):
+        score += 25
+
+    # Experience Match (25 pts)
+    if re.search(r'\b\d+\+?\s+(years|yrs)', full_text.lower()):
+        score += 25
+
+    return round(score, 2), matched_keywords
+job_keywords = [
+    "python", "nlp", "machine learning", "deep learning", "tensorflow",
+    "scikit-learn", "pandas", "numpy", "streamlit", "flask", "sql", "data analysis",
+    "java", "spring", "hibernate", "selenium", "automation testing",
+    "web development", "html", "css", "javascript", "react", "angular",
+    "dotnet", "c#", ".net", "azure", "aws", "cloud", "devops", "docker", "kubernetes",
+    "etl", "hadoop", "big data", "data engineer", "data science", "tableau",
+    "power bi", "business analyst", "blockchain", "network security",
+    "ai", "artificial intelligence", "resume screening", "classification model"
+]
+education_keywords = [
+    "b.tech", "bachelor", "m.tech", "mca", "bsc", "msc", "engineering",
+    "b.e", "m.e", "phd", "postgraduate", "undergraduate", "degree", "computer science"
+]
 
 # Main App
 def main():
@@ -74,12 +104,28 @@ def main():
                 prediction_id = clf.predict(input_features)[0]
                 category_name = category_mapping.get(prediction_id, "Unknown")
                 st.success(f"🎯 **Predicted Category:** {category_name}")
+
+                # Your scoring block here
+                resume_score, matched_keywords = score_resume(resume_text, job_keywords, education_keywords)
+
+                st.subheader("📊 Resume Quality Score")
+                st.write(f"🔢 **Score:** {resume_score} / 100")
+
+                if resume_score >= 80:
+                    st.success("✅ Excellent match!")
+                elif resume_score >= 60:
+                    st.warning("⚠️ Decent resume. Could improve.")
+                else:
+                    st.error("❌ Resume needs improvement.")
+
+                st.markdown("**✅ Matched Keywords:**")
+                st.write(', '.join(matched_keywords) if matched_keywords else "None matched")
+
         else:
             st.warning("⚠️ Could not extract text from the file.")
 
     st.markdown("---")
     st.markdown("📌 *Model uses NLP and ML for text classification*")
-
 
 # Python main
 if __name__ == "__main__":
